@@ -1,8 +1,10 @@
 import React from 'react';
-import {ErrorMessage, Field, Form, Formik} from "formik";
+import {Field, Form, Formik} from "formik";
 import * as Yup from 'yup'
-import {setFormData} from "../store/formDataSlice";
-import {useAppDispatch} from "../hooks/redux";
+import {setFormData} from "../../store/formDataSlice";
+import {useAppDispatch} from "../../hooks/redux";
+import {MyTextInput} from "../FormikFormsBuild/FormikFormsBuild";
+import style from "./inputForm.module.scss"
 
 const InputForm = () => {
 
@@ -17,8 +19,8 @@ const InputForm = () => {
                     typeChart: 'bar'
                 }}
                 validationSchema={Yup.object({
-                    axisLabelsX: Yup.string().required(),
-                    axisLabelsY: Yup.string().required(),
+                    axisLabelsX: Yup.string().required('Enter a value for the X axis'),
+                    axisLabelsY: Yup.string().required('Enter a value for the Y axis'),
                     typeChart: Yup.string().oneOf(['bar', 'line'])
                 })}
                 onSubmit={(formData) => {
@@ -33,18 +35,30 @@ const InputForm = () => {
                 }}
             >
                 {formik => (
-                <Form onBlur={() => formik.handleSubmit()}>
+                <Form
+                    onBlur={() => formik.handleSubmit()} className={style.form}
+                    onKeyDown={(event => {event.key === 'Enter' && formik.handleSubmit()})}
+                >
                     <div>
-                        <label htmlFor='axisLabelsX'>X axis labels</label>
-                        <Field name='axisLabelsX' type='text'/>
-                        <ErrorMessage name="axisLabelsX"/>
+                        <MyTextInput
+                            className={style.inputPlace}
+                            name='axisLabelsX'
+                            type='text'
+                            label="X axis labels"
+                            placeholder='label1, label2, label3, ...'
+                        />
                     </div>
                     <div>
-                        <label htmlFor='axisLabelsY'>Y axis labels</label>
-                        <Field name='axisLabelsY' type='text'/>
-                        <ErrorMessage name="axisLabelsY"/>
+                        <MyTextInput
+                            className={style.inputPlace}
+                            label='Y axis labels'
+                            type='text'
+                            name='axisLabelsY'
+                            placeholder='1, 2, 3, ...'
+                        />
+
                     </div>
-                    <div onClick={() => formik.handleSubmit()}>
+                    <div onClick={() => formik.handleSubmit()} className={style.changeType}>
                         <label>
                             <Field type='radio' name='typeChart' value='bar'/>
                             Bar chart

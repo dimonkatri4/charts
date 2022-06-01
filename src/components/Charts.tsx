@@ -12,7 +12,7 @@ interface Props {
 
 function Charts({chartData,typeChart}: Props) {
 
-    return <div>
+    return <div className='chart'>
         {typeChart === 'bar' && <Bar data={chartData} />}
         {typeChart === 'line' && <Line data={chartData} />}
     </div>

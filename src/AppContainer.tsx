@@ -9,13 +9,9 @@ const AppContainer = () => {
         labels: labelsX,
         datasets: [
             {
-                label: "",
+                label: "Input data",
                 data: labelsY,
                 backgroundColor: [
-                    "rgba(75,192,192,1)",
-                    "#ecf0f1",
-                    "#50AF95",
-                    "#f3ba2f",
                     "#2a71d0",
                 ],
                 borderColor: "black",
