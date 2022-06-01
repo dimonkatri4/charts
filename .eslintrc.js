@@ -30,6 +30,12 @@ module.exports = {
     'import/extensions': [0],
     'default-param-last': ['off'],
     'import/prefer-default-export': 'off',
-    'import/no-unresolved': 'off'
+    'import/no-unresolved': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'no-unused-expressions': 'off',
+    'no-param-reassign': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/label-has-associated-control': 0
   },
 };

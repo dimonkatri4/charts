@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface InitialState {
     labelsX: string[]
@@ -9,7 +9,7 @@ interface InitialState {
 const initialState: InitialState = {
     labelsX: [],
     labelsY: [],
-    typeChart: ''
+    typeChart: '',
 }
 
 export const formDataSlice = createSlice({
@@ -20,10 +20,10 @@ export const formDataSlice = createSlice({
             state.labelsX = action.payload.labelsX
             state.labelsY = action.payload.labelsY
             state.typeChart = action.payload.typeChart
-        }
-    }
+        },
+    },
 })
 
-export const {setFormData} = formDataSlice.actions
+export const { setFormData } = formDataSlice.actions
 
 export default formDataSlice.reducer

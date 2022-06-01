@@ -1,20 +1,19 @@
 import React from 'react'
 import './App.css'
-import InputForm from "./components/InputForm/InputForm";
-import {ChartData} from "./AppContainer";
-import Charts from "./components/Charts";
+import InputForm from './components/InputForm/InputForm'
+import { ChartData } from './AppContainer'
+import Charts from './components/Charts'
 
 interface Props {
-    typeChart: string,
+    typeChart: string
     chartData: ChartData
 }
 
-function App({typeChart, chartData}:Props) {
-
+function App({ typeChart, chartData }: Props) {
     return (
         <div className="wrapper">
-            <div className='main'>
-                <div className='title'>Charts</div>
+            <div className="main">
+                <div className="title">Charts</div>
                 <InputForm />
                 <Charts chartData={chartData} typeChart={typeChart} />
             </div>

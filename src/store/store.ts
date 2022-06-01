@@ -1,11 +1,10 @@
-import {configureStore} from "@reduxjs/toolkit";
-import formDataReducer from "./formDataSlice"
-
+import { configureStore } from '@reduxjs/toolkit'
+import formDataReducer from './formDataSlice'
 
 export const store = configureStore({
     reducer: {
-        formData: formDataReducer
-    }
+        formData: formDataReducer,
+    },
 })
 
 export type RootState = ReturnType<typeof store.getState>
