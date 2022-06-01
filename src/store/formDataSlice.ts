@@ -17,11 +17,13 @@ export const formDataSlice = createSlice({
     initialState,
     reducers: {
         setFormData: (state, action: PayloadAction<InitialState>) => {
-            state = action.payload
+            state.labelsX = action.payload.labelsX
+            state.labelsY = action.payload.labelsY
+            state.typeChart = action.payload.typeChart
         }
     }
 })
 
-export const setFormData = formDataSlice.actions
+export const {setFormData} = formDataSlice.actions
 
 export default formDataSlice.reducer

@@ -1,19 +1,15 @@
-import React from 'react'
-import {Bar} from 'react-chartjs-2'
-import {Chart as ChartJS, registerables} from 'chart.js'
-import {useAppSelector} from "../hooks/redux";
+import React from 'react';
+import App from './App';
+import {useAppSelector} from "./hooks/redux";
 
-ChartJS.register(...registerables)
-
-
-function BarChart() {
+const AppContainer = () => {
     const {labelsX, labelsY, typeChart} = useAppSelector(state => state.formData)
 
     const chartData = {
         labels: labelsX,
         datasets: [
             {
-                label: "Users Gained",
+                label: "",
                 data: labelsY,
                 backgroundColor: [
                     "rgba(75,192,192,1)",
@@ -28,9 +24,19 @@ function BarChart() {
         ],
     }
 
-    return <div>
-        <Bar data={chartData} />
-    </div>
+    return <App typeChart={typeChart} chartData={chartData}/>
+};
+
+export interface ChartData {
+    labels: string[]
+    datasets:
+        {
+            label: string
+            data: number[]
+            backgroundColor?: string[]
+            borderColor?: string
+            borderWidth?: number
+        }[]
 }
 
-export default BarChart
+export default AppContainer;

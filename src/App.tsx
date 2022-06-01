@@ -2,14 +2,21 @@ import React from 'react'
 import './App.css'
 import BarChart from './components/BarChart'
 import InputForm from "./components/InputForm";
+import {ChartData} from "./AppContainer";
+import Charts from "./components/Charts";
 
-function App() {
+interface Props {
+    typeChart: string,
+    chartData: ChartData
+}
+
+function App({typeChart, chartData}:Props) {
 
     return (
         <div className="App">
             <div style={{ width: 700 }}>
-                <BarChart />
                 <InputForm />
+                <Charts chartData={chartData} typeChart={typeChart} />
             </div>
         </div>
     )

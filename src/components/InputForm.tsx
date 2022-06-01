@@ -1,8 +1,13 @@
 import React from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from 'yup'
+import {setFormData} from "../store/formDataSlice";
+import {useAppDispatch} from "../hooks/redux";
 
 const InputForm = () => {
+
+    const dispatch = useAppDispatch()
+
     return (
         <div>
             <Formik
@@ -19,10 +24,16 @@ const InputForm = () => {
                 onSubmit={(formData) => {
                     const arrayX = formData.axisLabelsX.split(',').map(v => v.replace(/\s+/g, ''))
                     const arrayY = formData.axisLabelsY.split(',').filter(v => v !== '').map(Number)
-                    console.log(arrayX, arrayY, formData.typeChart)
+                    const data = {
+                        labelsX: arrayX,
+                        labelsY: arrayY,
+                        typeChart: formData.typeChart
+                    }
+                    dispatch(setFormData(data))
                 }}
             >
-                <Form>
+                {formik => (
+                <Form onBlur={() => formik.handleSubmit()}>
                     <div>
                         <label htmlFor='axisLabelsX'>X axis labels</label>
                         <Field name='axisLabelsX' type='text'/>
@@ -33,7 +44,7 @@ const InputForm = () => {
                         <Field name='axisLabelsY' type='text'/>
                         <ErrorMessage name="axisLabelsY"/>
                     </div>
-                    <div>
+                    <div onClick={() => formik.handleSubmit()}>
                         <label>
                             <Field type='radio' name='typeChart' value='bar'/>
                             Bar chart
@@ -43,9 +54,8 @@ const InputForm = () => {
                             Line chart
                         </label>
                     </div>
-                    <button type="submit">Submit</button>
                 </Form>
-
+                )}
             </Formik>
         </div>
     );
