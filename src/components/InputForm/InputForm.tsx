@@ -63,11 +63,11 @@ function InputForm() {
                             />
                         </div>
                         <div onClick={() => formik.handleSubmit()} className={style.changeType}>
-                            <label htmlFor="typeChart">
+                            <label>
                                 <Field type="radio" name="typeChart" value="bar" />
                                 Bar chart
                             </label>
-                            <label htmlFor="typeChart">
+                            <label>
                                 <Field type="radio" name="typeChart" value="line" />
                                 Line chart
                             </label>
