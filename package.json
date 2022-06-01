@@ -1,6 +1,7 @@
 {
   "name": "chart",
   "version": "0.1.0",
+  "homepage": "https://dimonkatri4.github.io/charts",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
@@ -30,7 +31,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.tsx src/**/*.ts",
     "lint-fix": "eslint src/**/*.tsx src/**/*.ts --fix",
-    "prettier": "prettier -w src/**/*.tsx src/**/*.ts"
+    "prettier": "prettier -w src/**/*.tsx src/**/*.ts",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -61,6 +64,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^4.0.0",
     "prettier": "2.6.2"
   }
 }
